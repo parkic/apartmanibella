@@ -3,7 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import vuetify from "./plugins/vuetify";
 import VueI18n from "vue-i18n";
-import lineClamp from 'vue-line-clamp'
+import lineClamp from "vue-line-clamp";
 // import CountryFlag from "vue-country-flag";
 
 Vue.config.productionTip = false;
@@ -106,11 +106,3 @@ new Vue({
   i18n,
   render: (h) => h(App),
 }).$mount("#app");
-
-
-// brisi datum rodjenja
-// za enon navedi gore tehnologije,
-// coursers izbrisi
-// projekt manager u okviru cega za Web
-
-// for the customer
