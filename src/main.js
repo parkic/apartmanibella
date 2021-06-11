@@ -30,6 +30,8 @@ const messages = {
       title: "apartments",
       price: "price",
       day: "day",
+      description:
+        "U okrivu našeg kompleksa smešteno je 4 luksuzna apartmana koji su kategorisani sa 4 zvezdice. Ulaz u kompleks 2500, u cenu uključena ležaljke, peškir i korišćenje bazena. Ograničen broj ljudi na 50. Rezervacije radnim danima od 08h do 16h, a subotom od 09h do 15h. Broj za rezervacije: 065/831-83-12",
       apartments: [
         {
           name: "Apartment 1",
@@ -70,7 +72,7 @@ const messages = {
     },
     about: {
       title: "About",
-      text: "Bella apartmani u Kruševcu nude ugodan smeštaj tokom cele godine, svima kojima je osecaj vlastitog doma najvažniji na njihovim putovanjima. Prijatan enterijer, atraktivna lokacija, pristupačne cene i domaćinska usluga su ono sto Bella apartmane na dan izdvaja od drugih. U duhu domaćinske tradicije i gostoprimljivosti našeg grada i naroda, izaćićemo u susret svakoj vašoj želji. Vođeni idejom da se svako u svom domu oseća najlepše, kreirali smo za Vas ponudu koja će Vam omogućiti da Kruševac doživite na jedan prisniji način, kao svoju kuću.",
+      text: "Bella apartmani u Kruševcu nude ugodan smeštaj tokom cele godine, svima kojima je osecaj vlastitog doma najvažniji na njihovim putovanjima. Prijatan enterijer, atraktivna lokacija, pristupačne cene i domaćinska usluga su ono sto Bella apartmane na dan izdvaja od drugih. U duhu domaćinske tradicije i gostoprimljivosti našeg grada i naroda, izaćićemo u susret svakoj vašoj želji. Vođeni idejom da se svako u svom domu oseća najlepše, kreirali smo za Vas ponudu koja će Vam omogućiti da Kruševac doživite na jedan prisniji način, kao svoju kuću. Ovo je ovde dodatak da bi drzao prostor, i nzm koliko cu morati da lupetam gluposti da bih mogao da imam dovoljno teksta da popuni prostor a sa druge strane da ne moram da koristim lorem ipsum, jer, ljubi brat, ne moze vise tako... Pa nisam ja latinski ucio nego srpski. Fun fact, ovo treba da bude verzija na engleskom HAHA",
     },
     contact: {
       title: "Contact",
