@@ -46,6 +46,11 @@ const messages = {
           name: "City view",
           desc: "Neki tekst o nekom poglednu, nzm ni ja sta da se doda...",
         },
+        {
+          icon: "cash-100",
+          name: "No credit card needed",
+          desc: "This property only accepts cash payments.",
+        },
       ],
       description:
         "Boasting air-conditioned accommodation with a terrace, Bella studios & apartments is situated in Kruševac. This apartment features free private parking, room service and free WiFi. The apartment features 1 bedroom, 1 bathroom, a flat-screen TV with satellite channels, a dining area, a fully equipped kitchen, and a balcony with city views. A casino is also available for guests at the apartment.",

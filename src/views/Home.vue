@@ -86,6 +86,7 @@
         <p class="px-4">{{ $t("apartments.description") }}</p>
       </div>
 
+      <!-- Apartments slider -->
       <vueper-slides
         class="no-shadow"
         fixed-height="400px"
@@ -107,9 +108,8 @@
                 <v-card-title>
                   <v-row>
                     <v-col>{{ $t(`apartments.apartments[${i}].name`) }}</v-col>
-                    <v-col>
-                      <b>{{ $t(`apartments.apartments[${i}].price`) }}e</b> /
-                      {{ $t("apartments.day") }}
+                    <v-col class="text-right">
+                      <b>{{ $t(`apartments.apartments[${i}].price`) }}e</b>/{{ $t("apartments.day") }}
                     </v-col>
                   </v-row>
                 </v-card-title>
@@ -120,10 +120,12 @@
       </vueper-slides>
 
       <!-- Icons -->
-      <div class="px-7 pt-10">
+      <div class="px-7 py-10">
         <v-row justify="center" align="center">
           <v-col
             cols="12"
+            sm="6"
+            lg="3"
             class="d-flex justify-center"
             v-for="(item, idx) in $t('apartments.icons')"
             :key="idx"
@@ -208,79 +210,91 @@
 
     <!-- Contact -->
     <div class="px-4">
-      <h2 class="subtitle mt-15">{{ $t("contact.title").toUpperCase() }}</h2>
+      <h2 v-if="$vuetify.breakpoint.name == 'xs' || $vuetify.breakpoint.name == 'sm'" class="subtitle mt-15">
+        {{ $t("contact.title").toUpperCase() }}
+      </h2>
 
-      <!-- Contact Information -->
-      <v-row class="mb-5">
-        <v-col cols="12" class="d-flex justify-center">
-          <v-card
-            flat
-            class="text-center d-flex flex-column align-center justify-center"
-          >
-            <div>
-              <v-icon>mdi-map-marker</v-icon>
-              <p class="mb-0 mt-2">Vidovdanska 95,</p>
-              <p class="mb-0">37000 Kruševac,</p>
-              <p>Srbija</p>
-            </div>
-          </v-card>
-        </v-col>
-
-        <v-col cols="12" class="d-flex justify-center">
-          <v-card
-            flat
-            class="text-center d-flex flex-column align-center justify-center"
-          >
-            <div>
-              <v-icon>mdi-clock</v-icon>
-              <p class="mb-0 mt-2">
-                {{ $t("contact.workTime[0]") }}: 00:00 - 24:00
-              </p>
-              <p>{{ $t("contact.workTime[1]") }}</p>
-            </div>
-          </v-card>
-        </v-col>
-
-        <v-col cols="12" class="text-center px-0 pb-0">
-          <a :href="'tel:+381641237956'">
-            <!-- <v-icon>mdi-phone</v-icon>  -->
-            <p class="mb-0">
-              {{ $t("contact.reservation") }}:
-              <span class="primary--text">+381 64 123-79-56</span>
-            </p>
-          </a>
-        </v-col>
-
-        <v-col cols="12" class="text-center px-0">
-          <a :href="'mailto:vladimir96ks@gmail.com'">
-            <!-- <v-icon>mdi-email</v-icon>  -->
-            <p class="mb-0">Email: <span class="primary--text">vladimir96ks@gmail.com</span></p>
-          </a>
-        </v-col>
-      </v-row>
-
-      <!-- Write us -->
       <v-row>
-        <v-col cols="12">
-          <h3 class="subtitle text-center mb-7">{{ $t("contact.writeUs") }}</h3>
+        <!-- Contact Information -->
+        <v-col cols="12" md="6">
+          <v-col cols="12" v-if="$vuetify.breakpoint.name != 'xs' && $vuetify.breakpoint.name != 'sm'" class="py-0">
+            <h3 class="subtitle text-center mb-7">
+              {{ $t("contact.contactInfo") }}
+            </h3>
+          </v-col>
+
+          <v-row class="mb-5">
+            <v-col cols="12" class="d-flex justify-center">
+              <v-card
+                flat
+                class="text-center d-flex flex-column align-center justify-center"
+              >
+                <div>
+                  <v-icon>mdi-map-marker</v-icon>
+                  <p class="mb-0 mt-2">Vidovdanska 95,</p>
+                  <p class="mb-0">37000 Kruševac,</p>
+                  <p>Srbija</p>
+                </div>
+              </v-card>
+            </v-col>
+
+            <v-col cols="12" class="d-flex justify-center">
+              <v-card
+                flat
+                class="text-center d-flex flex-column align-center justify-center"
+              >
+                <div>
+                  <v-icon>mdi-clock</v-icon>
+                  <p class="mb-0 mt-2">
+                    {{ $t("contact.workTime[0]") }}: 00:00 - 24:00
+                  </p>
+                  <p>{{ $t("contact.workTime[1]") }}</p>
+                </div>
+              </v-card>
+            </v-col>
+
+            <v-col cols="12" class="text-center px-0 pb-0">
+              <a :href="'tel:+381641237956'">
+                <p class="mb-0">
+                  {{ $t("contact.reservation") }}:
+                  <span class="primary--text">+381 64 123-79-56</span>
+                </p>
+              </a>
+            </v-col>
+
+            <v-col cols="12" class="text-center px-0">
+              <a :href="'mailto:vladimir96ks@gmail.com'">
+                <p class="mb-0">Email: <span class="primary--text">vladimir96ks@gmail.com</span></p>
+              </a>
+            </v-col>
+          </v-row>
         </v-col>
-        <v-col cols="12">
-          <p>{{ $t("contact.writeUsText") }}</p>
-        </v-col>
-        <v-col cols="12" class="py-0">
-          <v-text-field :label="$t('contact.writeUsForm.name')" outlined></v-text-field>
-        </v-col>
-        <v-col cols="12" class="py-0">
-          <v-text-field :label="$t('contact.writeUsForm.email')" outlined></v-text-field>
-        </v-col>
-        <v-col cols="12" class="py-0">
-          <v-text-field :label="$t('contact.writeUsForm.title')" outlined></v-text-field>
-        </v-col>
-        <v-col cols="12" class="py-0">
-          <v-textarea outlined auto-grow :label="$t('contact.writeUsForm.message')" rows="6"></v-textarea>
-        </v-col>
-        <v-col offset="1" cols="10" class="py-0">
-          <v-btn block large color="primary">{{ $t("contact.writeUsForm.send") }}</v-btn>
+
+        <v-col cols="12" offset-sm="1" sm="10" offset-md="0" md="6" lg="5">
+          <!-- Write us -->
+          <v-row>
+            <v-col cols="12">
+              <h3 class="subtitle text-center mb-7">{{ $t("contact.writeUs") }}</h3>
+            </v-col>
+            <v-col cols="12">
+              <p class="text-center">{{ $t("contact.writeUsText") }}</p>
+            </v-col>
+            <v-col cols="12" sm="6" class="py-0">
+              <v-text-field :label="$t('contact.writeUsForm.name')" outlined></v-text-field>
+            </v-col>
+            <v-col cols="12" sm="6" class="py-0">
+              <v-text-field :label="$t('contact.writeUsForm.email')" outlined></v-text-field>
+            </v-col>
+            <v-col cols="12" class="py-0">
+              <v-text-field :label="$t('contact.writeUsForm.title')" outlined></v-text-field>
+            </v-col>
+            <v-col cols="12" class="py-0">
+              <v-textarea outlined auto-grow :label="$t('contact.writeUsForm.message')" rows="6"></v-textarea>
+            </v-col>
+            <v-col offset="1" cols="10" offset-sm="3" sm="6" class="py-0">
+              <v-btn block large color="primary">{{ $t("contact.writeUsForm.send") }}</v-btn>
+            </v-col>
+          </v-row>
         </v-col>
       </v-row>
     </div>
