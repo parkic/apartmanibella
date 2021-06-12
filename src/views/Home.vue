@@ -91,38 +91,63 @@
         fixed-height="400px"
         :arrows="false"
         :bullets="false"
-        :visible-slides="1"
+        :visible-slides="visibleSlides"
         :slide-ratio="1 / 4"
         :dragging-distance="70"
       >
         <vueper-slide v-for="(slide, i) in mainSlides" :key="i">
           <template v-slot:content>
-            <div class="vueperslide__content-wrapper" style="flex-direction: row">
+            <div
+              class="vueperslide__content-wrapper"
+              style="flex-direction: row"
+            >
               <v-card flat class="mx-auto" max-width="344">
                 <v-img :src="mainSlides[i].image" height="344px"></v-img>
 
-                <v-card-title> {{ $t(`apartments.apartments[${i}].name`)}} </v-card-title>
+                <v-card-title>
+                  <v-row>
+                    <v-col>{{ $t(`apartments.apartments[${i}].name`) }}</v-col>
+                    <v-col>
+                      <b>{{ $t(`apartments.apartments[${i}].price`) }}e</b> /
+                      {{ $t("apartments.day") }}
+                    </v-col>
+                  </v-row>
+                </v-card-title>
               </v-card>
             </div>
           </template>
         </vueper-slide>
       </vueper-slides>
 
-      <!-- <div class="px-7">
-        <v-row align="center" justify="center">
-          <v-col cols="12" class="d-flex justify-center">
-            <div>
-              <v-icon size="60">mdi-wifi</v-icon>
-              <br>
-              Free Internet
-            </div>
+      <!-- Icons -->
+      <div class="px-7 pt-10">
+        <v-row justify="center" align="center">
+          <v-col
+            cols="12"
+            class="d-flex justify-center"
+            v-for="(item, idx) in $t('apartments.icons')"
+            :key="idx"
+          >
+            <v-card
+              flat
+              class="text-center d-flex flex-column align-center justify-center"
+            >
+              <!-- {{$t("apartments.icons")}} -->
+              <div>
+                <v-icon :size="iconSize" color="primary"
+                  >mdi-{{ item.icon }}</v-icon
+                >
+                <h3>{{ item.name }}</h3>
+                <p>{{ item.desc }}</p>
+              </div>
+            </v-card>
           </v-col>
         </v-row>
-      </div> -->
+      </div>
     </div>
 
     <!-- About -->
-    <div class="wave mt-10">
+    <!-- <div class="wave mt-10">
       <svg
         viewBox="0 0 500 150"
         preserveAspectRatio="none"
@@ -133,9 +158,21 @@
           style="stroke: none; fill: #08f"
         ></path>
       </svg>
+    </div> -->
+    <div style="height: 50px; overflow: hidden">
+      <svg
+        viewBox="0 0 500 150"
+        preserveAspectRatio="none"
+        style="height: 100%; width: 100%"
+      >
+        <path
+          d="M-17.77,151.47 C-17.21,156.41 527.93,-8.38 526.80,-7.39 L500.00,150.00 L0.00,150.00 Z"
+          style="stroke: none; fill: #08f"
+        ></path>
+      </svg>
     </div>
 
-    <div class="px-4 mainPageAbout">
+    <div class="mainPageAbout px-4 py-12">
       <h2 class="subtitle mt-0 white--text">
         {{ $t("about.title").toUpperCase() }}
       </h2>
@@ -144,7 +181,7 @@
       </p>
     </div>
 
-    <div class="wave">
+    <!-- <div class="wave">
       <svg
         viewBox="0 0 500 150"
         preserveAspectRatio="none"
@@ -155,41 +192,101 @@
           style="stroke: none; fill: #08f"
         ></path>
       </svg>
+    </div> -->
+    <div style="height: 50px; overflow: hidden">
+      <svg
+        viewBox="0 0 500 150"
+        preserveAspectRatio="none"
+        style="height: 100%; width: 100%"
+      >
+        <path
+          d="M-24.54,161.34 C-21.16,143.58 517.21,-2.45 516.64,-4.44 L500.84,-4.44 L0.00,0.00 Z"
+          style="stroke: none; fill: #08f"
+        ></path>
+      </svg>
     </div>
 
     <!-- Contact -->
     <div class="px-4">
-      <h2 class="subtitle mt-0">{{ $t("contact.title").toUpperCase() }}</h2>
+      <h2 class="subtitle mt-15">{{ $t("contact.title").toUpperCase() }}</h2>
+
+      <!-- Contact Information -->
       <v-row class="mb-5">
-        <v-col cols="12" class="text-center px-0">
-          <v-tooltip bottom>
-            <template v-slot:activator="{ on, attrs }">
-              <a :href="'tel:+381641237956'" v-bind="attrs" v-on="on">
-                <v-icon>mdi-phone</v-icon> +381 (64) 123-79-56
-              </a>
-            </template>
-            <span>Send us mail</span>
-          </v-tooltip>
+        <v-col cols="12" class="d-flex justify-center">
+          <v-card
+            flat
+            class="text-center d-flex flex-column align-center justify-center"
+          >
+            <div>
+              <v-icon>mdi-map-marker</v-icon>
+              <p class="mb-0 mt-2">Vidovdanska 95,</p>
+              <p class="mb-0">37000 Kruševac,</p>
+              <p>Srbija</p>
+            </div>
+          </v-card>
+        </v-col>
+
+        <v-col cols="12" class="d-flex justify-center">
+          <v-card
+            flat
+            class="text-center d-flex flex-column align-center justify-center"
+          >
+            <div>
+              <v-icon>mdi-clock</v-icon>
+              <p class="mb-0 mt-2">
+                {{ $t("contact.workTime[0]") }}: 00:00 - 24:00
+              </p>
+              <p>{{ $t("contact.workTime[1]") }}</p>
+            </div>
+          </v-card>
+        </v-col>
+
+        <v-col cols="12" class="text-center px-0 pb-0">
+          <a :href="'tel:+381641237956'">
+            <!-- <v-icon>mdi-phone</v-icon>  -->
+            <p class="mb-0">
+              {{ $t("contact.reservation") }}:
+              <span class="primary--text">+381 64 123-79-56</span>
+            </p>
+          </a>
         </v-col>
 
         <v-col cols="12" class="text-center px-0">
-          <v-tooltip bottom>
-            <template v-slot:activator="{ on, attrs }">
-              <a
-                :href="'mailto:vladimir96ks@gmail.com'"
-                v-bind="attrs"
-                v-on="on"
-              >
-                <v-icon>mdi-email</v-icon> vladimir96ks@gmail.com
-              </a>
-            </template>
-            <span>Send us mail</span>
-          </v-tooltip>
+          <a :href="'mailto:vladimir96ks@gmail.com'">
+            <!-- <v-icon>mdi-email</v-icon>  -->
+            <p class="mb-0">Email: <span class="primary--text">vladimir96ks@gmail.com</span></p>
+          </a>
+        </v-col>
+      </v-row>
+
+      <!-- Write us -->
+      <v-row>
+        <v-col cols="12">
+          <h3 class="subtitle text-center mb-7">{{ $t("contact.writeUs") }}</h3>
+        </v-col>
+        <v-col cols="12">
+          <p>{{ $t("contact.writeUsText") }}</p>
+        </v-col>
+        <v-col cols="12" class="py-0">
+          <v-text-field :label="$t('contact.writeUsForm.name')" outlined></v-text-field>
+        </v-col>
+        <v-col cols="12" class="py-0">
+          <v-text-field :label="$t('contact.writeUsForm.email')" outlined></v-text-field>
+        </v-col>
+        <v-col cols="12" class="py-0">
+          <v-text-field :label="$t('contact.writeUsForm.title')" outlined></v-text-field>
+        </v-col>
+        <v-col cols="12" class="py-0">
+          <v-textarea outlined auto-grow :label="$t('contact.writeUsForm.message')" rows="6"></v-textarea>
+        </v-col>
+        <v-col offset="1" cols="10" class="py-0">
+          <v-btn block large color="primary">{{ $t("contact.writeUsForm.send") }}</v-btn>
         </v-col>
       </v-row>
     </div>
 
-    <div class="map">
+    <!-- M A P A -->
+    <!-- <div class="map">
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2890.2372453860135!2d21.327620515721293!3d43.58077446512876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475687ef024bf195%3A0xbe2b86db3981c2ea!2sVidovdanska%2095%2C%20Kru%C5%A1evac%2037000!5e0!3m2!1sen!2srs!4v1623416704774!5m2!1sen!2srs"
         width="100%"
@@ -198,8 +295,7 @@
         allowfullscreen=""
         loading="lazy"
       ></iframe>
-    </div>
-    <!-- <h2>{{ $t("message.hello") }}</h2> -->
+    </div> -->
   </div>
 </template>
 
@@ -210,6 +306,7 @@ import "vueperslides/dist/vueperslides.css";
 export default {
   components: { VueperSlides, VueperSlide },
   data: () => ({
+    iconSize: 60,
     apartmentModel: 0,
     mainSlides: [
       {
@@ -237,6 +334,8 @@ export default {
         case "sm":
           return 2;
         case "md":
+          return 3;
+        case "lg":
           return 4;
         default:
           return 4;
@@ -288,5 +387,14 @@ h2 {
 .mainPageAbout {
   background-color: #08f;
   color: white;
+}
+
+.triangle-bottom-right {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 80px 500px;
+  border-color: transparent transparent #6980fe transparent;
 }
 </style>

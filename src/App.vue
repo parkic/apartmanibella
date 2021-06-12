@@ -73,7 +73,7 @@
       <router-view />
     </v-main>
 
-    <v-footer dark padless>
+    <v-footer dark padless class="mt-15">
       <v-col cols="12" class="py-0">
         <v-card flat tile color="transparent" class="white--text text-center">
           <v-card-text>
