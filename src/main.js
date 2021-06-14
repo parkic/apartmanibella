@@ -4,17 +4,23 @@ import router from "./router";
 import vuetify from "./plugins/vuetify";
 import VueI18n from "vue-i18n";
 import lineClamp from "vue-line-clamp";
-// import CountryFlag from "vue-country-flag";
+import VueAnime from "vue-animejs";
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+import BackToTop from 'vue-backtotop'
 
 Vue.config.productionTip = false;
 Vue.use(VueI18n);
+Vue.use(VueAnime);
+Vue.use(BackToTop);
 Vue.use(lineClamp, {
   // plugin options
 });
 
 const messages = {
   en: {
-    menuOptions: ["Home", "Apartments", "About", "Contact"],
+    title: "Bella apartments",
+    menuOptions: ["Home", "Apartments", "About us", "Contact"],
     home: {
       mainSlider: {
         titles: [
@@ -93,8 +99,20 @@ const messages = {
       ],
     },
     about: {
-      title: "About",
+      title: "About us",
       text: "Bella apartmani u Kruševcu nude ugodan smeštaj tokom cele godine, svima kojima je osecaj vlastitog doma najvažniji na njihovim putovanjima. Prijatan enterijer, atraktivna lokacija, pristupačne cene i domaćinska usluga su ono sto Bella apartmane na dan izdvaja od drugih. U duhu domaćinske tradicije i gostoprimljivosti našeg grada i naroda, izaćićemo u susret svakoj vašoj želji. Vođeni idejom da se svako u svom domu oseća najlepše, kreirali smo za Vas ponudu koja će Vam omogućiti da Kruševac doživite na jedan prisniji način, kao svoju kuću. Ovo je ovde dodatak da bi drzao prostor, i nzm koliko cu morati da lupetam gluposti da bih mogao da imam dovoljno teksta da popuni prostor a sa druge strane da ne moram da koristim lorem ipsum, jer, ljubi brat, ne moze vise tako... Pa nisam ja latinski ucio nego srpski. Fun fact, ovo treba da bude verzija na engleskom HAHA",
+      bid: {
+        title: "A bid",
+        text: [
+          "Boasting air-conditioned accommodation with a terrace, Bella studios & apartments is situated in Kruševac. This apartment features free private parking, room service and free WiFi.",
+          "The apartment features 1 bedroom, 1 bathroom, a flat-screen TV with satellite channels, a dining area, a fully equipped kitchen, and a balcony with city views.",
+          "A casino is also available for guests at the apartment.",
+          "Soko Banja is 44 km from Bella studios & apartments, while Brzeće is 47 km from the property. The nearest airport is Constantine the Great Airport, 50 km from the accommodation.",
+          "Couples particularly like the location — they rated it 10 for a two-person trip.",
+          "We speak your language!",
+          "Bella studios & apartments has been welcoming Booking.com guests since 28 Dec 2020.",
+        ],
+      },
     },
     contact: {
       title: "Contact",
@@ -114,6 +132,7 @@ const messages = {
   },
 
   srLat: {
+    title: "Bella apartmani",
     menuOptions: ["Početna", "Apartmani", "O nama", "Kontakt"],
     home: {
       mainSlider: {
@@ -190,6 +209,18 @@ const messages = {
     about: {
       title: "O nama",
       text: "Bella apartmani u Kruševcu nude ugodan smeštaj tokom cele godine, svima kojima je osecaj vlastitog doma najvažniji na njihovim putovanjima. Prijatan enterijer, atraktivna lokacija, pristupačne cene i domaćinska usluga su ono sto Bella apartmane na dan izdvaja od drugih. U duhu domaćinske tradicije i gostoprimljivosti našeg grada i naroda, izaćićemo u susret svakoj vašoj želji. Vođeni idejom da se svako u svom domu oseća najlepše, kreirali smo za Vas ponudu koja će Vam omogućiti da Kruševac doživite na jedan prisniji način, kao svoju kuću. Ovo je ovde dodatak da bi drzao prostor, i nzm koliko cu morati da lupetam gluposti da bih mogao da imam dovoljno teksta da popuni prostor a sa druge strane da ne moram da koristim lorem ipsum, jer, ljubi brat, ne moze vise tako... Pa nisam ja latinski ucio nego srpski. Fun fact, ovo treba da bude verzija na engleskom HAHA",
+      bid: {
+        title: "Ponuda",
+        text: [
+          "Boasting air-conditioned accommodation with a terrace, Bella studios & apartments is situated in Kruševac. This apartment features free private parking, room service and free WiFi.",
+          "The apartment features 1 bedroom, 1 bathroom, a flat-screen TV with satellite channels, a dining area, a fully equipped kitchen, and a balcony with city views.",
+          "A casino is also available for guests at the apartment.",
+          "Soko Banja is 44 km from Bella studios & apartments, while Brzeće is 47 km from the property. The nearest airport is Constantine the Great Airport, 50 km from the accommodation.",
+          "Couples particularly like the location — they rated it 10 for a two-person trip.",
+          "We speak your language!",
+          "Bella studios & apartments has been welcoming Booking.com guests since 28 Dec 2020.",
+        ],
+      }
     },
     contact: {
       title: "Kontakt",
@@ -209,6 +240,7 @@ const messages = {
   },
 
   srCir: {
+    title: "Bella апартмани",
     menuOptions: ["Почетна", "Апартмани", "О нама", "Контакт"],
     home: {
       mainSlider: {
@@ -285,6 +317,18 @@ const messages = {
     about: {
       title: "O нама",
       text: "Bella apartmani u Kruševcu nude ugodan smeštaj tokom cele godine, svima kojima je osecaj vlastitog doma najvažniji na njihovim putovanjima. Prijatan enterijer, atraktivna lokacija, pristupačne cene i domaćinska usluga su ono sto Bella apartmane na dan izdvaja od drugih. U duhu domaćinske tradicije i gostoprimljivosti našeg grada i naroda, izaćićemo u susret svakoj vašoj želji. Vođeni idejom da se svako u svom domu oseća najlepše, kreirali smo za Vas ponudu koja će Vam omogućiti da Kruševac doživite na jedan prisniji način, kao svoju kuću. Ovo je ovde dodatak da bi drzao prostor, i nzm koliko cu morati da lupetam gluposti da bih mogao da imam dovoljno teksta da popuni prostor a sa druge strane da ne moram da koristim lorem ipsum, jer, ljubi brat, ne moze vise tako... Pa nisam ja latinski ucio nego srpski. Fun fact, ovo treba da bude verzija na engleskom HAHA",
+      bid: {
+        title: "Понуда",
+        text: [
+          "Boasting air-conditioned accommodation with a terrace, Bella studios & apartments is situated in Kruševac. This apartment features free private parking, room service and free WiFi.",
+          "The apartment features 1 bedroom, 1 bathroom, a flat-screen TV with satellite channels, a dining area, a fully equipped kitchen, and a balcony with city views.",
+          "A casino is also available for guests at the apartment.",
+          "Soko Banja is 44 km from Bella studios & apartments, while Brzeće is 47 km from the property. The nearest airport is Constantine the Great Airport, 50 km from the accommodation.",
+          "Couples particularly like the location — they rated it 10 for a two-person trip.",
+          "We speak your language!",
+          "Bella studios & apartments has been welcoming Booking.com guests since 28 Dec 2020.",
+        ],
+      }
     },
     contact: {
       title: "Контакт",
@@ -310,6 +354,9 @@ const i18n = new VueI18n({
 });
 
 new Vue({
+  created() {
+    AOS.init();
+  },
   router,
   vuetify,
   i18n,

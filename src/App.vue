@@ -55,7 +55,6 @@
         </v-col>
       </v-row>
     </v-navigation-drawer>
-
     <!-- Heading -->
     <v-app-bar absolute flat color="transparent" height="72">
       <v-toolbar-title>Place for logo</v-toolbar-title>
@@ -72,6 +71,12 @@
     <v-main>
       <router-view />
     </v-main>
+
+    <back-to-top bottom="50px" right="20px" visibleoffset="400">
+      <v-btn color="indigo darken-4" fab>
+        <v-icon color="white">mdi-arrow-up-bold</v-icon>
+      </v-btn>
+    </back-to-top>
 
     <v-footer dark padless class="mt-15">
       <v-col cols="12" class="py-0">
@@ -105,18 +110,20 @@
 
 <script>
 import CountryFlag from "vue-country-flag";
+import BackToTop from "vue-backtotop";
 
 export default {
   components: {
     CountryFlag,
+    BackToTop,
   },
   data: () => ({
     drawer: null,
     menuOptions: [
       { name: "home", icon: "mdi-home" },
-      { name: "apartments", icon: "mdi-pencil" },
-      { name: "about", icon: "mdi-pencil" },
-      { name: "contact", icon: "mdi-pencil" },
+      { name: "apartments", icon: "mdi-bed" },
+      { name: "about", icon: "mdi-card-account-details" },
+      { name: "contact", icon: "mdi-information" },
     ],
     icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"],
     // group: null,
