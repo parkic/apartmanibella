@@ -13,6 +13,7 @@
 
       <v-list nav dense class="pt-7">
         <!-- v-model="group" -->
+        <!-- active-class="deep-purple--text text--accent-4" -->
         <v-list-item-group active-class="deep-purple--text text--accent-4">
           <v-list-item
             v-for="(option, idx) in menuOptions"
@@ -32,6 +33,17 @@
       </v-list>
 
       <v-divider></v-divider>
+      <!-- fast contact info -->
+      <!-- <div>
+        <v-row>
+          <v-col offset="1" cols="10" class="my-5">
+            <a :href="'mailto:vladimir96ks@gmail.com'">
+              <v-icon>mdi-email</v-icon>
+              <span>example@test.com</span>
+            </a>
+          </v-col>
+        </v-row>
+      </div> -->
 
       <!-- Languages -->
       <v-row justify="center" class="py-8 px-5">
@@ -60,12 +72,18 @@
       <v-toolbar-title>Place for logo</v-toolbar-title>
 
       <v-spacer></v-spacer>
-
-      <v-app-bar-nav-icon
-        x-large
+      <v-icon 
+        size="40"
         @click="drawer = !drawer"
-        color="white"
-      ></v-app-bar-nav-icon>
+        :color="$route.name == 'About' || $route.name == 'Apartments'? 'deep-purple' : 'white'"
+      >
+        mdi-menu
+      </v-icon>
+      <!-- <v-app-bar-nav-icon
+        size="40"
+        @click="drawer = !drawer"
+        :color="$route.name == 'About' ? 'deep-purple' : 'white'"
+      ></v-app-bar-nav-icon> -->
     </v-app-bar>
 
     <v-main>

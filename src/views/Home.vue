@@ -10,7 +10,7 @@
     <TheHomeAbout data-aos="fade-up" data-aos-duration="1500" />
 
     <!-- Contact -->
-    <TheHomeContact />
+    <TheHomeContact data-aos="fade-up" data-aos-duration="1500" />
 
     <!-- M A P A -->
     <!-- <div class="map">

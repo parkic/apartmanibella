@@ -72,46 +72,48 @@
 
           <!-- CONTACT FORM -->
           <v-form ref="contactForm" style="width: 100%">
-            <v-col cols="12" sm="6" class="py-0">
-              <v-text-field
-                prepend-inner-icon="mdi-account"
-                :label="$t('contact.writeUsForm.name')"
-                outlined
-                v-model="name"
-                :rules="[rules.required]"
-              ></v-text-field>
-            </v-col>
-            <v-col cols="12" sm="6" class="py-0">
-              <v-text-field
-                prepend-inner-icon="mdi-email"
-                :label="$t('contact.writeUsForm.email')"
-                outlined
-                v-model="email"
-                :rules="[rules.email]"
-              ></v-text-field>
-            </v-col>
-            <v-col cols="12" class="py-0">
-              <v-text-field
-                prepend-inner-icon="mdi-format-title"
-                :label="$t('contact.writeUsForm.title')"
-                outlined
-                v-model="message.title"
-                :rules="[rules.required]"
-              ></v-text-field>
-            </v-col>
-            <v-col cols="12" class="py-0">
-              <v-textarea
-                outlined
-                auto-grow
-                :label="$t('contact.writeUsForm.message')"
-                rows="6"
-                v-model="message.text"
-                :rules="[rules.required]"
-              ></v-textarea>
-            </v-col>
-            <v-col offset="1" cols="10" offset-sm="3" sm="6" class="py-0">
-              <v-btn @click="sendMessage" block large color="primary">{{ $t("contact.writeUsForm.send") }}</v-btn>
-            </v-col>
+            <v-row class="mx-0">
+              <v-col cols="12" sm="6" class="py-0">
+                <v-text-field
+                  prepend-inner-icon="mdi-account"
+                  :label="$t('contact.writeUsForm.name')"
+                  outlined
+                  v-model="name"
+                  :rules="[rules.required]"
+                ></v-text-field>
+              </v-col>
+              <v-col cols="12" sm="6" class="py-0">
+                <v-text-field
+                  prepend-inner-icon="mdi-email"
+                  :label="$t('contact.writeUsForm.email')"
+                  outlined
+                  v-model="email"
+                  :rules="[rules.email]"
+                ></v-text-field>
+              </v-col>
+              <v-col cols="12" class="py-0">
+                <v-text-field
+                  prepend-inner-icon="mdi-format-title"
+                  :label="$t('contact.writeUsForm.title')"
+                  outlined
+                  v-model="message.title"
+                  :rules="[rules.required]"
+                ></v-text-field>
+              </v-col>
+              <v-col cols="12" class="py-0">
+                <v-textarea
+                  outlined
+                  auto-grow
+                  :label="$t('contact.writeUsForm.message')"
+                  rows="6"
+                  v-model="message.text"
+                  :rules="[rules.required]"
+                ></v-textarea>
+              </v-col>
+              <v-col offset="1" cols="10" offset-sm="3" sm="6" class="py-0">
+                <v-btn @click="sendMessage" block large color="primary">{{ $t("contact.writeUsForm.send") }}</v-btn>
+              </v-col>
+            </v-row>
           </v-form>
         </v-row>
       </v-col>
